@@ -1,0 +1,54 @@
+<div class="container-fluid py-3">
+  <div class="row">
+    <!-- Left Panel (col-4): City-wise Thumbnails -->
+    <div class="col-md-4 border-end">
+      <h5 class="mb-3">📍 City Editions</h5>
+      <div class="row g-3">
+        @for (city of cityList; track city) {
+        <div class="col-6">
+          <img [src]="city.img" class="w-100 pdf-preview" (click)="selectPdf(city.pdf)" alt="{{ city.name }}" />
+          <p class="text-center small">{{ city.name }}</p>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Right Panel (col-8): Main PDF + Trending News -->
+    <div class="col-md-8">
+      <div class="row">
+        <!-- Trending News (left) -->
+        <div class="col-md-4 trending-news">
+          <h6>🔥 Trending News</h6>
+          <ul class="list-group list-group-flush small">
+            <li class="list-group-item">Operation Sindoor updates...</li>
+            <li class="list-group-item">Rahul Gandhi's latest comment...</li>
+            <li class="list-group-item">Modi speech highlights...</li>
+            <li class="list-group-item">Weather updates in Maharashtra...</li>
+          </ul>
+        </div>
+
+        <!-- PDF Viewer (right) -->
+        <div class="col-md-8">
+<!-- <iframe src="../../../assets/Delhi_news.pdf" width="100%" height="600px" frameborder="0"></iframe> -->
+
+          <!-- <iframe src="Delhi_news.pdf" frameborder="0"></iframe> -->
+          <pdf-viewer src="../../../assets/Delhi_news.pdf" [rotation]="0" [original-size]="false" [show-all]="true" [fit-to-page]="false"
+            [zoom]="1" [zoom-scale]="'page-width'" [stick-to-page]="false" [render-text]="true"
+            [external-link-target]="'blank'" [autoresize]="true" [show-borders]="false"
+            style="width: 100%; height: 100vh;"></pdf-viewer>
+
+          <!-- <pdf-viewer
+            [src]="selectedPdf"
+            [render-text]="true"
+            [original-size]="false"
+            [show-all]="true"
+            [autoresize]="true"
+            [zoom]="1.0"
+            style="display: block; width: 100%; height: 600px;"
+          >
+          </pdf-viewer> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
